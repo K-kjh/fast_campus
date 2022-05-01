@@ -18,6 +18,7 @@ import javax.validation.Valid;
 public class ApiController {
 
     //BindingResult 는 에러메세지가 담겨있다.
+    //@Valid 을 붙이면 user 클래스에서 사용되는 validation 을 사용할수 있다.
     @PostMapping("/user")
     public ResponseEntity user (@Valid @RequestBody User user, BindingResult bindingResult){
         System.out.println("user = " + user);
