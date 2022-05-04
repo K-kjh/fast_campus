@@ -1,0 +1,15 @@
+
+naver:
+  client:
+    id: Xed0ceZCNmsLqUzazW7w
+    secret: NL38DjQsVz
+  url:
+    search:
+      local: https://openapi.naver.com/v1/search/blog.json
+      image: https://openapi.naver.com/v1/search/image
+
+spring:
+  output:
+    ansi:
+      enabled : always
+
