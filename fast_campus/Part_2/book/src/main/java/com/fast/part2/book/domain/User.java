@@ -25,7 +25,6 @@ import java.time.LocalDateTime;
 public class User { //  레파지토리 있어야 조회등 가능
     @Id //pk
     @GeneratedValue
-    @Column(nullable = false)
     private Long id;
 
     @NotNull
@@ -36,4 +35,9 @@ public class User { //  레파지토리 있어야 조회등 가능
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+
+    public User(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
 }
