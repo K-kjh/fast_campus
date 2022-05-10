@@ -18,6 +18,12 @@ public class UsrRepositoryTest {
     private UserRepository userRepository;
 
     @Test
+    void sets(){
+
+    }
+
+
+    @Test
     void test(){
         userRepository.save((new User()));
 
@@ -79,6 +85,35 @@ public class UsrRepositoryTest {
 
         userRepository.findAll(example).forEach(System.out::println);
 
+
+    }
+
+    @Test
+    void test2(){
+        userRepository.save(new User("kang","kgh2252@gmail.com"));
+        User user = userRepository.findById(1L).orElseThrow(RuntimeException::new);
+       // user.setEmail("jhg_5252@naver.com");
+
+        userRepository.save(user);
+    }
+
+    @Test
+    void selectTest(){
+        test2();
+        System.out.println(userRepository.findByName("kang"));
+
+        System.out.println(userRepository.findByEmail("kgh2252@gmail.com"));
+        System.out.println(userRepository.getByEmail("kgh2252@gmail.com"));
+        System.out.println(userRepository.readByEmail("kgh2252@gmail.com"));
+        System.out.println(userRepository.queryByEmail("kgh2252@gmail.com"));
+        System.out.println(userRepository.searchByEmail("kgh2252@gmail.com"));
+        System.out.println(userRepository.streamByEmail("kgh2252@gmail.com"));
+    }
+
+    @Test
+    void ch4(){
+        test2();
+        userRepository.findFirstByName("kang",Sort.by(Sort.Order.desc("id")));
 
     }
 }
