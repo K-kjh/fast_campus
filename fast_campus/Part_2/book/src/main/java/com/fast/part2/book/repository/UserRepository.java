@@ -1,11 +1,15 @@
 package com.fast.part2.book.repository;
 
 import com.fast.part2.book.domain.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -60,5 +64,11 @@ public interface UserRepository extends JpaRepository<User,Long> {
 
    List<User> findTopByNameOrderByIdAsc(String name);
    List<User> findFirstByNameOrderByIdDescEmailAsc(String name);  // 아이디는 역순  이메일 정순으로 정렬
-   List<User> findFirstByName(String name, Sort sort);
+ //  List<User> findFirstByName(String name, Sort sort);
+   Page<User> findByName(String name, Pageable pageable);
+   //PageRequest.of(0,1,Sort.by(Order.desc("id"))
+   //                page, size:
+
+   @Query(value="select * from user limit 1;",nativeQuery = true)
+   Map<String,Object> findRowRecord();
 }
